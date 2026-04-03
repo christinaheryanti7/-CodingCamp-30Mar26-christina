@@ -74,6 +74,50 @@ header h1 { font-size: 1.4rem; font-weight: 700; }
 
 #balance.over-budget { color: var(--balance-over); }
 
+/* ── Budget Control (header) ── */
+#budget-control {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+#budget-control label {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.85);
+  white-space: nowrap;
+}
+
+#budget-input {
+  width: 140px;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  font-size: 0.88rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+#budget-input::placeholder { color: rgba(255,255,255,0.5); }
+#budget-input:focus {
+  outline: none;
+  border-color: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.2);
+}
+
+#budget-save-btn {
+  padding: 0.35rem 0.8rem;
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#budget-save-btn:hover { background: rgba(255,255,255,0.32); }
+
 /* ── Theme Toggle Button ── */
 #theme-toggle {
   background: rgba(255,255,255,0.15);
@@ -86,6 +130,34 @@ header h1 { font-size: 1.4rem; font-weight: 700; }
   transition: background 0.2s;
 }
 #theme-toggle:hover { background: rgba(255,255,255,0.25); }
+
+/* ── Monthly Insights Bar ── */
+#monthly-insights {
+  background: rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 2rem;
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.9);
+  flex-wrap: wrap;
+}
+#insights-label { font-size: 1rem; }
+#insights-total { font-weight: 700; color: #fff; }
+#insights-count { color: rgba(255,255,255,0.65); }
+
+#month-filter {
+  padding: 0.28rem 0.6rem;
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#month-filter:focus { outline: none; border-color: rgba(255,255,255,0.7); }
+#month-filter option { background: #312e81; color: #fff; }
 
 /* ── Main layout ── */
 main {
@@ -181,6 +253,106 @@ section h2 {
   text-align: center;
   margin-top: 1rem;
 }
+
+/* ── Custom Category Section ── */
+#custom-category-section {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+#custom-category-section h3 {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.6rem;
+}
+
+#custom-category-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+#new-category-input {
+  flex: 1;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.88rem;
+  background: var(--input-bg);
+  color: var(--text);
+}
+#new-category-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+#add-category-btn {
+  padding: 0.45rem 0.8rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#add-category-btn:hover { background: var(--accent-hover); }
+
+#custom-category-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+}
+
+.category-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.65rem;
+  background: var(--input-bg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.category-tag button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-placeholder);
+  font-size: 0.75rem;
+  padding: 0;
+  line-height: 1;
+  transition: color 0.2s;
+}
+.category-tag button:hover { color: #ef4444; }
+
+/* ── List Controls (filter + sort) ── */
+#list-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+#filter-category {
+  flex: 1;
+  min-width: 120px;
+  padding: 0.4rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  background: var(--input-bg);
+  color: var(--text);
+  cursor: pointer;
+}
+#filter-category:focus { outline: none; border-color: var(--accent); }
 
 /* ── Sort Button ── */
 #sort-btn {

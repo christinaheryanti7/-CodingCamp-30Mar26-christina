@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Expense Tracker</title>
+  <title>Expense Tracker Christin</title>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
@@ -11,8 +11,34 @@
   <header>
     <h1>Expense Tracker</h1>
     <div id="balance">Total: Rp 0</div>
+    <div id="budget-control">
+      <label for="budget-input">Budget Limit (Rp)</label>
+      <input id="budget-input" type="number" placeholder="e.g. 2000000" min="1" />
+      <button id="budget-save-btn">Set</button>
+    </div>
     <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙 Dark Mode</button>
   </header>
+
+  <div id="monthly-insights">
+    <span id="insights-label">📅</span>
+    <select id="month-filter" aria-label="Filter by month">
+      <option value="">All Months</option>
+      <option value="0">January</option>
+      <option value="1">February</option>
+      <option value="2">March</option>
+      <option value="3">April</option>
+      <option value="4">May</option>
+      <option value="5">June</option>
+      <option value="6">July</option>
+      <option value="7">August</option>
+      <option value="8">September</option>
+      <option value="9">October</option>
+      <option value="10">November</option>
+      <option value="11">December</option>
+    </select>
+    <span id="insights-total">Rp 0</span>
+    <span id="insights-count">0 transactions</span>
+  </div>
 
   <main>
     <section id="form-section">
@@ -29,6 +55,15 @@
         <button type="submit">Add Transaction</button>
         <p id="error-msg" aria-live="polite"></p>
       </form>
+
+      <div id="custom-category-section">
+        <h3>Custom Categories</h3>
+        <div id="custom-category-form">
+          <input id="new-category-input" type="text" placeholder="New category name" autocomplete="off" />
+          <button id="add-category-btn">Add</button>
+        </div>
+        <div id="custom-category-tags"></div>
+      </div>
     </section>
 
     <section id="chart-section">
@@ -39,7 +74,13 @@
 
     <section id="list-section">
       <h2>Transactions</h2>
-      <div class="sort-controls" style="display: flex; gap: 10px; margin-bottom: 15px;">
+      <div id="list-controls">
+        <select id="filter-category">
+          <option value="">All Categories</option>
+          <option value="Food">Food</option>
+          <option value="Transport">Transport</option>
+          <option value="Fun">Fun</option>
+        </select>
         <button id="sort-btn">Sort by Amount ↓</button>
       </div>
       <ul id="transaction-list"></ul>
