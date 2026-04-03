@@ -1,0 +1,268 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── CSS Variables (Light Mode) ── */
+:root {
+  --bg: #f1f5f9;
+  --surface: #ffffff;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --text-placeholder: #94a3b8;
+  --border: #cbd5e1;
+  --input-bg: #f8fafc;
+  --header-bg: #6366f1;
+  --accent: #6366f1;
+  --accent-hover: #4f46e5;
+  --shadow: rgba(0,0,0,0.08);
+  --balance-bg: rgba(255,255,255,0.15);
+  --balance-color: #ffffff;
+  --balance-over: #fca5a5;
+  --delete-hover-bg: #fee2e2;
+  --delete-hover-color: #ef4444;
+}
+
+/* ── Dark Mode ── */
+body.dark {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-placeholder: #475569;
+  --border: #334155;
+  --input-bg: #0f172a;
+  --header-bg: #312e81;
+  --accent: #818cf8;
+  --accent-hover: #6366f1;
+  --shadow: rgba(0,0,0,0.3);
+  --balance-bg: rgba(255,255,255,0.1);
+  --balance-color: #e2e8f0;
+  --balance-over: #fca5a5;
+  --delete-hover-bg: #450a0a;
+  --delete-hover-color: #f87171;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* ── Header ── */
+header {
+  background: var(--header-bg);
+  color: #fff;
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+header h1 { font-size: 1.4rem; font-weight: 700; }
+
+#balance {
+  font-size: 1.2rem;
+  font-weight: 600;
+  background: var(--balance-bg);
+  color: var(--balance-color);
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  transition: color 0.3s;
+}
+
+#balance.over-budget { color: var(--balance-over); }
+
+/* ── Theme Toggle Button ── */
+#theme-toggle {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#theme-toggle:hover { background: rgba(255,255,255,0.25); }
+
+/* ── Main layout ── */
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "form  chart"
+    "list  list";
+  gap: 1.5rem;
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+section {
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 4px var(--shadow);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+section h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+#form-section  { grid-area: form; }
+#chart-section { grid-area: chart; }
+#list-section  { grid-area: list; }
+
+/* ── Form ── */
+#transaction-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+#transaction-form input,
+#transaction-form select {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: var(--input-bg);
+  color: var(--text);
+  transition: border-color 0.2s, background 0.3s, color 0.3s;
+}
+
+#transaction-form input:focus,
+#transaction-form select:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: var(--surface);
+}
+
+#transaction-form button[type="submit"] {
+  padding: 0.65rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#transaction-form button[type="submit"]:hover { background: var(--accent-hover); }
+
+#error-msg {
+  font-size: 0.85rem;
+  color: #ef4444;
+  min-height: 1.2em;
+}
+
+/* ── Chart ── */
+#chart-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#pie-chart { max-width: 220px; width: 100%; }
+
+#empty-chart-msg {
+  font-size: 0.9rem;
+  color: var(--text-placeholder);
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* ── Sort Button ── */
+#sort-btn {
+  display: block;
+  margin-bottom: 0.75rem;
+  padding: 0.4rem 0.9rem;
+  background: var(--input-bg);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+#sort-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* ── Transaction list ── */
+#transaction-list {
+  list-style: none;
+  max-height: 320px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#transaction-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 0.75rem;
+  background: var(--input-bg);
+  border-radius: 8px;
+  border-left: 4px solid var(--accent);
+  gap: 0.5rem;
+  transition: background 0.3s;
+}
+
+.tx-info { flex: 1; min-width: 0; }
+.tx-name { font-weight: 600; font-size: 0.95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tx-meta { font-size: 0.8rem; color: var(--text-muted); margin-top: 2px; }
+
+.tx-amount {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #ef4444;
+  white-space: nowrap;
+}
+
+.tx-delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-placeholder);
+  font-size: 1.1rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  transition: color 0.2s, background 0.2s;
+  line-height: 1;
+}
+.tx-delete:hover { color: var(--delete-hover-color); background: var(--delete-hover-bg); }
+
+/* Category border colors */
+li[data-category="Food"]      { border-left-color: #f87171; }
+li[data-category="Transport"] { border-left-color: #60a5fa; }
+li[data-category="Fun"]       { border-left-color: #34d399; }
+
+#empty-list-msg {
+  font-size: 0.9rem;
+  color: var(--text-placeholder);
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  main {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "form"
+      "chart"
+      "list";
+  }
+  header { flex-direction: column; align-items: flex-start; }
+}
